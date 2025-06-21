@@ -1,0 +1,84 @@
+This version uses triple backticks for code block formatting and includes comment hashtags where appropriate.
+
+```markdown
+## 📁 Directory Structure – `katello-ol9-secure-install/`
+
+```bash
+# Root directory
+katello-ol9-secure-install/
+└── playbooks/
+    ├── site.yml                       # Top-level playbook
+    └── roles/
+        └── katello/
+            ├── tasks/
+            │   ├── main.yml           # Task orchestrator
+            │   ├── certs.yml          # Cert/keytool deployment logic
+            │   ├── firewall.yml       # Ports 443, 80, etc.
+            │   ├── db-check.yml       # Optional Candlepin DB drop
+            │   └── installer.yml      # foreman-installer execution
+            ├── files/
+            │   └── keystore.p12       # Optional: import pre-built keystore
+            ├── templates/
+            │   └── openssl.cnf.j2     # Optional: OpenSSL config template
+            └── handlers/
+                └── main.yml           # Restart handlers
+
+
+
+galaxy_info:
+  role_name: katello
+  author: Jefferson
+  description: >
+    An Ansible role to deploy a secure, reproducible Katello 3.11.5 installation on Oracle Linux 9.
+    Includes PKCS12 certificate handling, firewall validation, DB rerun logic, and installer orchestration.
+
+  company: Bare Metal Applied Science
+  license: MIT
+
+  min_ansible_version: 2.14
+
+  platforms:
+    - name: EL
+      versions:
+        - 9
+
+  galaxy_tags:
+    - katello
+    - oraclelinux
+    - foreman
+    - automation
+    - secure-install
+    - content-lifecycle
+    - airgap
+    - devops
+    - plato
+
+dependencies: []
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

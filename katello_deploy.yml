@@ -1,0 +1,59 @@
+---
+- name: Deploy Katello 3.11.5 on Oracle Linux 9
+  hosts: katello
+  become: true
+  vars:
+    candlepin_keystore_path: /etc/candlepin/certs/keystore.p12
+
+  tasks:
+
+    - name: Ensure firewalld is running
+      service:
+        name: firewalld
+        state: started
+        enabled: true
+
+    - name: Open required Katello ports
+      firewalld:
+        port: "{{ item }}/tcp"
+        permanent: yes
+        immediate: yes
+        state: enabled
+      loop:
+        - 443
+        - 80
+        - 9090
+        - 5647
+        - 8140
+
+    - name: Copy custom PKCS12 keystore
+      copy:
+        src: files/keystore.p12
+        dest: "{{ candlepin_keystore_path }}"
+        owner: root
+        group: root
+        mode: '0600'
+
+    - name: Check if Candlepin DB exists
+      shell: |
+        psql -U postgres -tc "SELECT 1 FROM pg_database WHERE datname='candlepin'" | grep -q 1
+      register: candlepin_exists
+      ignore_errors: true
+
+    - name: Prompt for DB drop if needed
+      pause:
+        prompt: "Candlepin DB exists. Drop it before proceeding? Press Enter to continue or Ctrl+C to abort."
+      when: candlepin_exists.rc == 0
+
+    - name: Drop Candlepin DB
+      shell: psql -U postgres -c "DROP DATABASE IF EXISTS candlepin;"
+      when: candlepin_exists.rc == 0
+
+    - name: Drop Foreman DB
+      shell: psql -U postgres -c "DROP DATABASE IF EXISTS foreman;"
+      when: candlepin_exists.rc == 0
+
+    - name: Run Katello installer
+      command: foreman-installer --scenario katello
+      args:
+        creates: /etc/foreman-installer/scenarios.d/katello-answers.yaml
