@@ -9,7 +9,7 @@
 ![Last Verified](https://img.shields.io/badge/Verified-June_2025-brightgreen)
 
 
-📄 [Full Installer Log](./katello-day0-install.log)
+📄 [Full Installer Log](./katello.log)
 
 
 ---
