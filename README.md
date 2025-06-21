@@ -1,7 +1,15 @@
 # katello-ol9-secure-install
+- [Purpose](#-purpose)
+- [Environment Overview](#-environment-overview)
+- [Step 0–6: Preflight Prep](#-step-06-preflight-prep)
+...
+
+![Katello 3.11.5](https://img.shields.io/badge/Katello-3.11.5-blue)
+![Oracle Linux 9.6](https://img.shields.io/badge/OL-9.6-orange)
+![Last Verified](https://img.shields.io/badge/Verified-June_2025-brightgreen)
 
 
-
+📄 [Full Installer Log](./katello-day0-install.log)
 
 
 ---
