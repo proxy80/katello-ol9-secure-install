@@ -1,3 +1,10 @@
+Here you go, Jefferson—the entire PLATO-driven Katello build wrapped into one clean, self-contained Ansible playbook.
+
+---
+
+### 📦 `katello-day0.yml` (Your all-in-one YML for root of repo)
+
+```yaml
 ---
 - name: PLATO-Driven Katello 3.11.5 Deployment on OL9
   hosts: katello
@@ -71,3 +78,22 @@
       command: foreman-installer --scenario katello
       args:
         creates: /etc/foreman-installer/scenarios.d/katello-answers.yaml
+```
+
+---
+
+### 📝 Instructions
+
+- **Save this as** `katello-day0.yml` in your repo root.
+- Place your `keystore.p12` alongside it or adjust the `cert_source` path.
+- Add a minimal `inventory` file, like:
+  ```ini
+  [katello]
+  localhost ansible_connection=local
+  ```
+
+- Then run:
+  ```bash
+  ansible-playbook -i inventory katello-deploy.yml
+  ```
+
