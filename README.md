@@ -14,7 +14,7 @@
 
 # 🚀 Deploying Katello 3.11.5 on Oracle Linux 9: A PLATO-Grounded End-to-End Build
 
-> By Jefferson | Infrastructure Engineer | [Bare Metal Applied Science]
+> By Jefferson | Infrastructure System Engineer | [Bare Metal Applied Science]
 
 ## 🧠 Purpose
 
@@ -26,7 +26,7 @@ No fluff. Just what works, what breaks, and why it matters.
 
 ## 🧰 Environment Overview
 
-- **Node**: `node-0.home.localdomain` 
+- **Node**: `foobar` 
 - **OS**: Oracle Linux 9.6
 - **Target**: Full Katello 3.11.5 stack, secure and GUI-ready
 - **Cert Strategy**: Manual `keytool`-based keystore with RSA fixes (installer bug workaround)
@@ -97,8 +97,8 @@ Final output:
 
 ```
 Success!
-* Foreman is running at https://node-0.home.localdomain
-    Initial credentials are admin / pNQrJMgHpUcTM23V
+* Foreman is running at https://foobar
+    Initial credentials are admin / acme_products
 ...
 * Smart Proxy is running at https://node-0.home.localdomain:9090
 ```
