@@ -26,7 +26,7 @@ No fluff. Just what works, what breaks, and why it matters.
 
 ## 🧰 Environment Overview
 
-- **Node**: `node-0.home.localdomain` (12.18.51.17)
+- **Node**: `node-0.home.localdomain` 
 - **OS**: Oracle Linux 9.6
 - **Target**: Full Katello 3.11.5 stack, secure and GUI-ready
 - **Cert Strategy**: Manual `keytool`-based keystore with RSA fixes (installer bug workaround)
